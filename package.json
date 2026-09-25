@@ -1,0 +1,16 @@
+{
+  "name": "borozdov-ember",
+  "private": true,
+  "description": "A warm parchment atelier lit by embers: cream paper, ink-black type, serif prose and one ember-orange accent.",
+  "license": "MIT",
+  "scripts": {
+    "lint": "stylelint theme.css",
+    "build": "node scripts/build.mjs",
+    "screenshots": "python3 scripts/screenshots.py"
+  },
+  "devDependencies": {
+    "lucide-static": "^1.47.0",
+    "stylelint": "^17.0.0",
+    "stylelint-config-obsidianmd": "^0.1.0"
+  }
+}

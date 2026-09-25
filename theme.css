@@ -1,0 +1,460 @@
+/*
+  Borozdov Ember — an Obsidian theme from the Borozdov collection.
+  Two faces: Parchment (light, cream paper) and Hearth (dark, warm soot).
+  Ink-black type, serif prose, quiet regular-weight headlines and one
+  ember-orange accent.
+  https://github.com/borozdov-obsidian-themes/ember
+
+  License: MIT (this file). No fonts are embedded: prose uses the
+  platform's book serif, the interface its system sans.
+*/
+
+/* ===== 1. PALETTE =====
+   Only these values differ by face. The ember is deepened for text so
+   links read at WCAG contrast; the bright ember stays for small marks. */
+
+.theme-light {
+  color-scheme: light;
+
+  --canvas: #f7f7f4;
+  --surface: #f2f1ed;
+  --inset: #efeee9;
+  --hover: #e6e5e0;
+  --hairline: #e2e1dc;
+  --strong: #cdcdc9;
+  --slate: #7a7974;
+  --tertiary: #a1a19f;
+  --soft: #3b3a33;
+  --ink: #26251e;
+  --ember: #c43d00;
+  --ember-bright: #f54e00;
+  --ember-veil: rgb(245 78 0 / 14%);
+  --mark: rgb(192 133 50 / 28%);
+  --scrim: rgb(38 37 30 / 35%);
+  --accent-h: 19;
+  --accent-s: 100%;
+  --accent-l: 38%;
+  --color-red: #cf2d56;
+  --color-orange: #c43d00;
+  --color-yellow: #9a6a26;
+  --color-green: #34785c;
+  --color-cyan: #1f8a65;
+  --color-blue: #3d6a8f;
+  --color-purple: #7a5aa6;
+  --color-pink: #b8477a;
+  --color-red-rgb: 207, 45, 86;
+  --color-orange-rgb: 196, 61, 0;
+  --color-yellow-rgb: 154, 106, 38;
+  --color-green-rgb: 52, 120, 92;
+  --color-cyan-rgb: 31, 138, 101;
+  --color-blue-rgb: 61, 106, 143;
+  --color-purple-rgb: 122, 90, 166;
+  --color-pink-rgb: 184, 71, 122;
+  --callout-quote: #7a7974;
+  --code-comment: #7a7974;
+  --code-function: #9a6a26;
+  --code-keyword: #cf2d56;
+  --code-operator: #3b3a33;
+  --code-property: #c43d00;
+  --code-punctuation: #84847e;
+  --code-string: #1f8a65;
+  --code-tag: #cf2d56;
+  --code-value: #3d6a8f;
+  --code-important: #c43d00;
+}
+
+.theme-dark {
+  color-scheme: dark;
+
+  --canvas: #1c1b17;
+  --surface: #23221d;
+  --inset: #181713;
+  --hover: #2d2c26;
+  --hairline: #33322b;
+  --strong: #4d4c44;
+  --slate: #a1a19f;
+  --tertiary: #7a7974;
+  --soft: #d6d5cf;
+  --ink: #ecebe6;
+  --ember: #ff7f47;
+  --ember-bright: #f54e00;
+  --ember-veil: rgb(255 127 71 / 20%);
+  --mark: rgb(217 160 79 / 30%);
+  --scrim: rgb(0 0 0 / 60%);
+  --accent-h: 19;
+  --accent-s: 100%;
+  --accent-l: 64%;
+  --color-red: #e8577c;
+  --color-orange: #ff7f47;
+  --color-yellow: #d9a04f;
+  --color-green: #3dbd8c;
+  --color-cyan: #4fc7a3;
+  --color-blue: #7fa9cf;
+  --color-purple: #b39ddb;
+  --color-pink: #e58cb4;
+  --color-red-rgb: 232, 87, 124;
+  --color-orange-rgb: 255, 127, 71;
+  --color-yellow-rgb: 217, 160, 79;
+  --color-green-rgb: 61, 189, 140;
+  --color-cyan-rgb: 79, 199, 163;
+  --color-blue-rgb: 127, 169, 207;
+  --color-purple-rgb: 179, 157, 219;
+  --color-pink-rgb: 229, 140, 180;
+  --callout-quote: #a1a19f;
+  --code-comment: #84847e;
+  --code-function: #d9a04f;
+  --code-keyword: #e8577c;
+  --code-operator: #d6d5cf;
+  --code-property: #ff7f47;
+  --code-punctuation: #84847e;
+  --code-string: #3dbd8c;
+  --code-tag: #e8577c;
+  --code-value: #7fa9cf;
+  --code-important: #ff7f47;
+}
+
+/* ===== 2. TYPE & SHAPE =====
+   Three voices: a book serif for prose, the system sans for headlines and
+   chrome, a monospace for code, tags and metadata. */
+
+body {
+  --font-serif: "EB Garamond", "Iowan Old Style", "Palatino", "Palatino Linotype",
+    "PT Serif", "Georgia", serif;
+  --font-interface-theme: -apple-system, "BlinkMacSystemFont", "Segoe UI",
+    "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  --font-text-theme: var(--font-serif);
+  --font-monospace-theme: "Berkeley Mono", "SF Mono", "SFMono-Regular",
+    ui-monospace, "Menlo", "Consolas", monospace;
+  --line-height-normal: 1.55;
+
+  /* Sharp, printed corners: 4px everywhere, 8px only on modals. */
+  --radius-s: 4px;
+  --radius-m: 4px;
+  --radius-l: 8px;
+  --radius-xl: 8px;
+  --input-radius: 4px;
+  --button-radius: 4px;
+  --checkbox-radius: 3px;
+  --input-shadow: none;
+  --input-shadow-hover: none;
+}
+
+/* Headlines whisper: regular weight in the sans, tightening as they grow. */
+body {
+  --h1-font: var(--font-interface); --h2-font: var(--font-interface);
+  --h3-font: var(--font-interface); --h4-font: var(--font-interface);
+  --h5-font: var(--font-interface); --h6-font: var(--font-interface);
+  --inline-title-font: var(--font-interface);
+  --h1-weight: 400; --h2-weight: 400; --h3-weight: 400;
+  --h4-weight: 500; --h5-weight: 500; --h6-weight: 500;
+  --inline-title-weight: 400;
+  --h1-line-height: 1.2; --h2-line-height: 1.2; --h3-line-height: 1.25;
+  --h4-line-height: 1.3; --h5-line-height: 1.3; --h6-line-height: 1.3;
+  --h1-color: var(--ink); --h2-color: var(--ink); --h3-color: var(--ink);
+  --h4-color: var(--ink); --h5-color: var(--ink); --h6-color: var(--slate);
+  --bold-weight: 600;
+}
+
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .cm-header-1,
+.inline-title {
+  letter-spacing: -0.025em;
+}
+
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .cm-header-2 {
+  letter-spacing: -0.015em;
+}
+
+.markdown-rendered h3,
+.markdown-source-view.mod-cm6 .cm-header-3 {
+  letter-spacing: -0.01em;
+}
+
+/* ===== 3. BASE VARIABLE MAPPING =====
+   Set on .theme-dark / .theme-light, where Obsidian declares them too; the
+   theme loads later and wins the tie. The interactive accent is ink: the
+   ember marks words, it never fills a control. */
+
+.theme-dark,
+.theme-light {
+  --background-primary: var(--canvas);
+  --background-primary-alt: var(--inset);
+  --background-secondary: var(--surface);
+  --background-secondary-alt: var(--canvas);
+  --background-modifier-hover: var(--hover);
+  --background-modifier-active-hover: var(--hover);
+  --background-modifier-border: var(--hairline);
+  --background-modifier-border-hover: var(--strong);
+  --background-modifier-border-focus: var(--strong);
+  --background-modifier-form-field: var(--canvas);
+  --text-normal: var(--ink);
+  --text-muted: var(--slate);
+  --text-faint: var(--tertiary);
+  --text-accent: var(--ember);
+  --text-accent-hover: var(--ember);
+  --text-on-accent: var(--canvas);
+  --text-on-accent-inverted: var(--canvas);
+  --text-selection: var(--ember-veil);
+  --text-highlight-bg: var(--mark);
+  --color-accent: var(--ink);
+  --color-accent-1: var(--ink);
+  --color-accent-2: var(--soft);
+  --interactive-accent: var(--ink);
+  --interactive-accent-hover: var(--soft);
+  --interactive-normal: var(--hover);
+  --interactive-hover: var(--strong);
+  --divider-color: var(--hairline);
+  --caret-color: var(--ember-bright);
+  --tab-container-background: var(--surface);
+  --titlebar-background: var(--surface);
+  --titlebar-background-focused: var(--surface);
+  --ribbon-background: var(--surface);
+  --ribbon-background-collapsed: var(--canvas);
+  --status-bar-background: var(--surface);
+  --nav-item-background-hover: var(--hover);
+  --nav-item-background-selected: var(--hover);
+  --nav-item-color-selected: var(--ink);
+  --nav-indentation-guide-color: var(--hairline);
+
+  /* Obsidian gives note, info and todo callouts its blue; this palette has
+     none, so the everyday callouts take the ember instead. */
+  --callout-default: var(--color-orange);
+  --callout-info: var(--color-orange);
+  --callout-todo: var(--color-orange);
+  --callout-warning: var(--color-yellow);
+  --callout-question: var(--color-yellow);
+}
+
+/* ===== 4. LINKS =====
+   Ember ink, underlined only on hover. */
+
+body {
+  --link-color: var(--ember);
+  --link-color-hover: var(--ember);
+  --link-external-color: var(--ember);
+  --link-external-color-hover: var(--ember);
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-external-decoration: none;
+  --link-external-decoration-hover: underline;
+  --link-unresolved-color: var(--ember);
+  --link-unresolved-opacity: 0.6;
+  --link-unresolved-decoration-style: dotted;
+}
+
+/* ===== 5. CALLOUTS =====
+   Paper on paper: a bone panel with a hairline; the title in the type's
+   color, set in the sans. */
+
+body {
+  --callout-border-width: 1px;
+  --callout-border-opacity: 1;
+  --callout-radius: 4px;
+  --callout-padding: 1rem 1.25rem;
+  --callout-title-weight: 500;
+  --callout-content-padding: 0.5rem 0 0;
+  --callout-blend-mode: normal;
+}
+
+.callout {
+  background-color: var(--surface);
+  border-color: var(--hairline);
+}
+
+.callout-title {
+  font-family: var(--font-interface);
+}
+
+.callout-content > :first-child { margin-top: 0; }
+.callout-content > :last-child { margin-bottom: 0; }
+
+/* ===== 6. CODE ===== */
+
+body {
+  --code-background: var(--inset);
+  --code-normal: var(--ink);
+  --code-radius: 4px;
+  --code-border-width: 1px;
+  --code-border-color: var(--hairline);
+}
+
+.token.keyword, .cm-keyword { font-weight: 500; }
+.token.comment, .cm-comment { font-style: italic; }
+
+/* ===== 7. BLOCKQUOTE =====
+   An editorial pull-quote: italic serif behind a thin ember rule. */
+
+body {
+  --blockquote-border-thickness: 2px;
+  --blockquote-border-color: var(--ember-bright);
+  --blockquote-color: var(--soft);
+  --blockquote-font-style: italic;
+}
+
+/* ===== 8. TAGS & METADATA =====
+   Labels speak in the monospace: tags, property names, table headers and
+   the status bar. */
+
+body {
+  --tag-size: 0.78em;
+  --tag-weight: 400;
+  --tag-radius: 4px;
+  --tag-padding-x: 0.5em;
+  --tag-padding-y: 0.15em;
+  --tag-border-width: 1px;
+  --tag-color: var(--ember);
+  --tag-color-hover: var(--ember);
+  --tag-background: transparent;
+  --tag-background-hover: var(--ember-veil);
+  --tag-border-color: var(--strong);
+  --tag-border-color-hover: var(--ember);
+  --tag-decoration-hover: none;
+}
+
+.tag, .cm-hashtag,
+.metadata-property-key,
+.status-bar {
+  font-family: var(--font-monospace);
+}
+
+.metadata-property-key {
+  color: var(--slate);
+}
+
+/* ===== 9. TABLES =====
+   A hairline frame and grid; mono headers in quiet capitals. */
+
+body {
+  --table-border-width: 1px;
+  --table-border-color: var(--hairline);
+  --table-header-background: var(--surface);
+  --table-header-background-hover: var(--hover);
+  --table-header-border-color: var(--hairline);
+  --table-header-font: var(--font-monospace);
+  --table-header-size: 0.75em;
+  --table-header-weight: 400;
+  --table-header-color: var(--slate);
+  --table-row-background-hover: var(--surface);
+  --table-row-alt-background: transparent;
+  --table-row-alt-background-hover: var(--surface);
+}
+
+.markdown-rendered table {
+  border: var(--table-border-width) solid var(--table-border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* The frame belongs to the table so it follows the corners; cells draw only
+   the inner grid, an end and a bottom line, none on the outer edges. */
+.markdown-rendered th,
+.markdown-rendered td {
+  border-block-start-width: 0;
+  border-inline-start-width: 0;
+}
+
+.markdown-rendered tr > :last-child {
+  border-inline-end-width: 0;
+}
+
+.markdown-rendered table > :last-child > tr:last-child > * {
+  border-block-end-width: 0;
+}
+
+.markdown-rendered th {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.markdown-rendered td, .markdown-rendered th {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 10. FIELDS & PROPERTIES ===== */
+
+select.dropdown, input[type="text"], input[type="search"], input[type="number"],
+textarea {
+  /* background-color, not the `background` shorthand: the shorthand resets
+     the dropdown's own arrow image. */
+  background-color: var(--background-modifier-form-field);
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* No focus ring while typing: the caret and the selection already show
+   where you are. Covers form fields and every contenteditable surface. */
+select.dropdown:focus, input:focus, textarea:focus,
+select.dropdown:focus-visible, input:focus-visible, textarea:focus-visible,
+[contenteditable]:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* A property's key is a label, not a field. input.* matches the frame rule
+   above at (0,1,1), so the element prefix is needed to win it. */
+input.metadata-property-key-input {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+body {
+  --pill-background: transparent;
+  --pill-background-hover: var(--ember-veil);
+  --pill-border-color: var(--strong);
+  --pill-border-color-hover: var(--ember);
+  --pill-color: var(--ember);
+  --pill-color-hover: var(--ember);
+}
+
+/* ===== 11. SURFACES ===== */
+
+.modal-bg {
+  background-color: var(--scrim);
+}
+
+/* Obsidian pads an embed only on the left, for an accent bar this theme
+   doesn't draw. Even padding all round, with room for the open-link icon. */
+body {
+  --embed-padding: var(--size-4-3) var(--size-4-8) var(--size-4-3) var(--size-4-4);
+  --embed-border-start: none;
+}
+
+.markdown-embed {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+}
+
+/* A hover preview is already a panel: the embed inside it stays flat. */
+.popover.hover-popover > .markdown-embed {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+hr, .cm-hr { border-color: var(--strong); }
+
+/* ===== 12. MOBILE =====
+   The phone layout re-declares tag and field colors on .is-mobile.theme-*,
+   outranking the rules above; the same selectors bring them back. */
+
+.is-mobile.theme-dark,
+.is-mobile.theme-light {
+  --tag-background: transparent;
+  --background-modifier-form-field: var(--canvas);
+  --background-modifier-hover: var(--hover);
+}
+
+/* ===== 13. REDUCED MOTION ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    --anim-duration-superfast: 0s;
+    --anim-duration-fast: 0s;
+    --anim-duration-moderate: 0s;
+    --anim-duration-slow: 0s;
+  }
+}
