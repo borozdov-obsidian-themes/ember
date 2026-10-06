@@ -33,7 +33,20 @@ headlines and one ember-orange accent.
   property names read as labels, not boxed fields
 - Link colors meet WCAG contrast: the ember is deepened for text and kept bright only for
   small marks
-- About 11 KB, no fonts embedded, no `!important`
+- About 94 KB with every variant, no fonts embedded, no `!important`
+
+## Variants
+
+Borozdov Ember also carries the other 27 themes of the collection's warm paper & editorial mood. Install the
+[Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin, open
+Settings → Style Settings → **Borozdov Ember** → **Variant**, and pick one: Sienna, Eggshell, Whisper, Folio, Clay, Scholar, Ash, Colophon, Tally, Bulletin, Quarto, Essay, Brief, Broadside, Gazette, Salon, Terracotta, Kernel, Manuscript, Ribbon, Pebble, Cabin, Primer, Memoir, Masthead, Tacet and Monograph.
+
+A variant brings that theme's palette in both modes, its fonts, weights and corners, and
+its tag and highlight colours. The layout — callouts, tables, the sidebar — stays
+Ember's. Fonts a theme embeds on its own aren't carried over; the variant falls back to
+the same system stack. Each theme is still available by itself from its repository.
+
+![Every variant of Borozdov Ember, dark and light](https://raw.githubusercontent.com/borozdov-obsidian-themes/ember/main/screenshots/variants.png)
 
 ## Installation
 
@@ -54,5 +67,5 @@ MIT — see [LICENSE](LICENSE).
 **По-русски.** Тема из коллекции Borozdov. Два лика: светлый «Пергамент» — кремовая бумага,
 и тёмный «Очаг» — тёплая сажа. Чернильный текст, проза с засечками, как в книге, тихие
 заголовки обычного веса и один акцент цвета тлеющих углей. Код, теги и метаданные —
-моноширинным. Устанавливается из каталога: Настройки → Оформление → Темы → Настроить →
+моноширинным. Через плагин Style Settings в теме есть ещё 27 вариантов — остальные темы коллекции в настроении «тёплая бумага и редакционный стиль». Устанавливается из каталога: Настройки → Оформление → Темы → Настроить →
 Borozdov Ember → Установить и применить.
